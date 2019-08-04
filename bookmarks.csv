@@ -1,0 +1,12 @@
+# Tag name          ;  color
+Untagged            ; #c0c0c0
+
+# Frequency ; Name                     ; Modulation          ;  Bandwidth; Tags
+ 10489550000; Lower Beacon             ; USB                 ;       2700; Untagged
+ 10489555000; CW Only                  ; USB                 ;       2700; Untagged
+ 10489600000; Digi (500 Hz)            ; USB                 ;       2700; Untagged
+ 10489620000; Digi (2700 Hz)           ; USB                 ;       2700; Untagged
+ 10489640000; Mixed                    ; USB                 ;       2700; Untagged
+ 10489690000; SSB Only                 ; USB                 ;       2700; Untagged
+ 10489795000; No TX                    ; USB                 ;       2700; Untagged
+ 10489800000; Upper Beacon             ; USB                 ;       2700; Untagged
