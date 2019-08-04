@@ -12,3 +12,7 @@ passband are ignored.
 
 gqrx must be configured to display the real downlink frequency (LNB LO setting in the "Receiver Options" tab)
 and remote control must be enabled.
+
+## trackUplink.sh
+Like trackDownlink.sh, but tracks the uplink frequency and allows tuning gqrx with the uplink transceiver's
+tuning knob.
