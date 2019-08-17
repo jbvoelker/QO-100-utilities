@@ -11,9 +11,15 @@ RX_CAT_ADDRESS="127.0.0.1:7356"
 
 LAST_TX_QRG=""
 
+# Default configuration
 TX_QRG_LOWER_BOUND=432050000
 TX_QRG_UPPER_BOUND=432300000
 RX_QRG_LOWER_BOUND=10489550000
+MAX_OUT_OF_BOUNDS=10000
+
+# Derived values
+LOWER_BOUND=$(("$TX_QRG_LOWER_BOUND"-"$MAX_OUT_OF_BOUNDS"))
+UPPER_BOUND=$(("$TX_QRG_UPPER_BOUND"+"$MAX_OUT_OF_BOUNDS"))
 
 while true ; do
     NEW_TX_QRG=$(rigctl -m "$TX_HAMLIB_MODEL" -r "$TX_CAT_INTERFACE" f)
@@ -30,7 +36,7 @@ while true ; do
         continue
     fi
 
-    if [ "$NEW_TX_QRG" -lt "$TX_QRG_LOWER_BOUND" ] || [ "$NEW_TX_QRG" -gt "$TX_QRG_UPPER_BOUND" ] ; then
+    if [ "$NEW_TX_QRG" -lt "$LOWER_BOUND" ] || [ "$NEW_TX_QRG" -gt "$UPPER_BOUND" ] ; then
         echo "Frequency out of bounds"
         sleep 0.01
         continue

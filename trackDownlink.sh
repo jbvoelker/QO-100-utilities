@@ -10,9 +10,15 @@ RX_CAT_ADDRESS="127.0.0.1:7356"
 
 LAST_RX_QRG=""
 
+# Default configuration
 RX_QRG_LOWER_BOUND=10489550000
 RX_QRG_UPPER_BOUND=10489800000
 TX_QRG_LOWER_BOUND=432050000
+MAX_OUT_OF_BOUNDS=10000
+
+# Derived values
+LOWER_BOUND=$(("$RX_QRG_LOWER_BOUND"-"$MAX_OUT_OF_BOUNDS"))
+UPPER_BOUND=$(("$RX_QRG_UPPER_BOUND"+"$MAX_OUT_OF_BOUNDS"))
 
 while true ; do
     NEW_RX_QRG=$(rigctl -m 2 -r "$RX_CAT_ADDRESS" f)
@@ -29,7 +35,7 @@ while true ; do
         continue
     fi
 
-    if [ "$NEW_RX_QRG" -lt "$RX_QRG_LOWER_BOUND" ] || [ "$NEW_RX_QRG" -gt "$RX_QRG_UPPER_BOUND" ] ; then
+    if [ "$NEW_RX_QRG" -lt "$LOWER_BOUND" ] || [ "$NEW_RX_QRG" -gt "$UPPER_BOUND" ] ; then
         echo "Frequency out of bounds"
         sleep 1
         continue
