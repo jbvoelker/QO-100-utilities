@@ -43,7 +43,7 @@ while true ; do
     fi
 
     TX_START_OFFSET=$(("$NEW_TX_QRG"-"$TX_QRG_LOWER_BOUND"))
-    echo "Offset from TX window start: $TC_START_OFFSET"
+    echo "Offset from TX window start: $TX_START_OFFSET"
 
     NEW_RX_QRG=$(("$RX_QRG_LOWER_BOUND"+"$TX_START_OFFSET"))
     echo "New RX frequency: $NEW_RX_QRG"
